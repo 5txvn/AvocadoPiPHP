@@ -1,0 +1,46 @@
+body {
+  background-color: honeydew;
+}
+input {
+  width: 85%;
+  background-color: honeydew;
+  font-size: 18px;
+  border-style: none;
+  border-color: honeydew;
+  color: limegreen;
+}
+input:focus {
+    outline-width: 0;
+}
+input:active {
+  border-style: "none";
+  border-color: honeydew;
+}
+::placeholder {
+  color: green;
+}
+.output {
+  color: limegreen;
+  font-size: 18px;
+  border-width: 5px;
+  border-color: limegreen;
+}
+#title {
+  color: limegreen;
+  font-size: 18px;
+}
+#version {
+   color: lightseagreen;
+   font-size: 18px;
+}
+#htmlterminal {
+  overflow-y: auto;
+  height: 100px;
+  border: 1px solid seagreen;
+  visibility: hidden;
+}
+#cdprefix {
+  font-size: 18px;
+  width: 15%;
+  color: limegreen;
+}

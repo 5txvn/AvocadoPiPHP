@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <head>
+    <link rel="shortcut icon" href="avocado.ico" type="image/x-icon">
+    <title>3 Digit Addition Practice</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+  <h1 id="questiontext">Problem:</h1>
+<p id="questionp"><span id="firstnumber"></span><span> + </span><span id="secondnumber"></span></p>
+<br><div style="text-align:center;"><input id="inputtest" placeholder="Enter answer here"></div>
+<br><div style="text-align:center;height:20%;"><button id="checkbtn" class="w3-button w3-round-large" onclick="buttonfn()">Check answer</button></div>
+<p style="margin:auto;border-width:5px;border-color:darkseagreen;border-style:double;border-radius:15px;width:50%;padding:10px;margin-top:30px;text-align:center;"><span class="timespan">Time: </span><span id="time" class="timespan"></span></p>
+<p class="scorestreak" id="score" style="margin:auto;margin-top:5%;"></p>
+<p class="scorestreak" id="streak" style="margin:auto;"></p>
+<script>
+  document.addEventListener("keydown", function(event) {
+  if (event.keyCode == 13) {
+     buttonfn();
+   }
+});
+var time = 0;
+var getscore = window.localStorage.getItem("score");
+var scorelength = getscore.length;
+var currentscore = window.localStorage.getItem("score");
+var getstreak = window.localStorage.getItem("streak");
+var streaklength = getstreak.length;
+var currentstreak = window.localStorage.getItem("streak");
+document.getElementById("score").innerHTML = "Current Score: " + scorelength;
+document.getElementById("streak").innerHTML = "Current Streak: " + streaklength;
+  setInterval(function(){
+time+=.250;
+document.getElementById("time").innerHTML = time;
+}, 250)
+var numbero = Math.floor(Math.random() * 900 + 100);
+var numbers = Math.floor(Math.random() * 900 + 100);
+document.getElementById("firstnumber").innerHTML = numbero;
+document.getElementById("secondnumber").innerHTML = numbers;
+var total1 = numbero + numbers;
+var total = total1.toString();
+function buttonfn() {
+  clearInterval();
+  var inputv = document.getElementById("inputtest").value;
+if (inputv === total) {
+  var addedscore = currentscore += 1;
+  window.localStorage.removeItem("score");
+  window.localStorage.setItem("score", addedscore);
+  var addedstreak = currentstreak += 1;
+  window.localStorage.removeItem("streak");
+  window.localStorage.setItem("streak", addedstreak);
+  window.location.reload()
+} else if (inputv === "$score%clear") {
+  window.localStorage.removeItem("score");
+  window.localStorage.setItem("score", "");
+  window.location.reload();
+} else if (inputv === "$streak%clear") {
+  window.localStorage.removeItem("streak");
+  window.localStorage.setItem("streak", "");
+  window.location.reload();
+} else {
+alert("Your Answer is incorrect, streak lost!");
+window.localStorage.removeItem("streak");
+window.localStorage.setItem("streak", "");
+window.location.reload();
+};
+}
+</script>
+<style>
+  body {
+    background-color:#6a994e;
+    color: white;
+  }
+  #inputtest {
+    text-align:center;
+    width:450px;
+    height: 20%;
+    font-size:25px;
+    background-color:#386641;
+    border-radius:20px;
+    border-style:none;
+    color:white;
+    margin-top: 5%;
+  }
+  #questiontext {
+    font-size:30px;
+    text-align:center;
+    color: #f2e8cf;
+  }
+  #questionp {
+    font-size:20px;
+    text-align:center;
+    margin-top:3%;
+    color: #a7c957;
+    border-style: inset;
+    border-width: 3px;
+    border-color: #a7c957;
+    border-radius: 10px;
+    width: 300px;
+    margin: auto;
+    margin-top: 7.5%
+  }
+  #checkbtn {
+    margin-top:4%;
+    background-color:#bc4749;
+  }
+  .timespan {
+    font-size:17.5px;
+    margin-top:5%;
+  }
+  ::placeholder {
+    color:white;
+  }
+  .scorestreak {
+    text-align: center;
+    font-size: 15px;
+    border-style: inset;
+    border-width: 3px;
+    border-color: seagreen;
+    border-radius: 10px;
+    width: 250px;
+  }
+  </style>
+</body>
+</html>
